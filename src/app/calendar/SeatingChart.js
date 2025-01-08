@@ -1,18 +1,6 @@
 import { useState } from 'react';
 import './SeatingChart.css';
-import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
 import { SignupFormDemo } from '@/components/SignUp';
-
-const stadium = [
-  {
-    text: "Stadium",
-    className: "text-white-500 dark:text-yellow-500",
-  },
-  {
-    text: "Booking",
-    className: "text-yellow-500 dark:text-yellow-500",
-  },
-];
 
 const sections = [
   { id: 'Section 1', seats: Array.from({ length: 200 }, (_, i) => ({ id: i + 1, reserved: false, selected: false })) },

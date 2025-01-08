@@ -1,15 +1,9 @@
 "use client";
 
-import { AuroraBackground } from "../components/ui/aurora-background";
-import { CoverDemo } from "@/components/Cover";
-import { AnimatedTestimonialsDemo } from "@/components/Testimonials";
 import { TextHoverEffect1 } from "@/components/Text1";
 import { TextHoverEffect2 } from "@/components/Text2";
 import { TimelineDemo } from "@/components/Timeline";
-import { TypewriterEffectSmooth } from '@/components/ui/typewriter-effect';
 import Footer from "@/components/Footer";
-import { SignupFormDemo } from "@/components/SignUp";
-
 
 const stadium = [
   {
