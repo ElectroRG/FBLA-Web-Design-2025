@@ -17,17 +17,16 @@ const Navbar = ({ className }: { className?: string }) => {
             href: "/", // Redirect to homepage on click
           }}
         >
-          <MenuItem setActive={setActive} active={active} item="Stadium">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/stadium">Gymnasium</HoveredLink>
-            </div>
-          </MenuItem>
+          {/* Centered Menu Items */}
+          <div className="flex justify-center space-x-8">
+            <MenuItem setActive={setActive} active={active} item="Stadium" href="/stadium">
+              {/* Removed the submenus under Stadium */}
+            </MenuItem>
 
-          <MenuItem setActive={setActive} active={active} item="Events">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/calendar">Event Calendar</HoveredLink>
-            </div>
-          </MenuItem>
+            <MenuItem setActive={setActive} active={active} item="Events" href="/calendar">
+              {/* Removed the submenus under Events */}
+            </MenuItem>
+          </div>
         </Menu>
       </div>
     </nav>

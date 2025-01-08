@@ -13,46 +13,35 @@ const transition = {
   restSpeed: 0.001,
 };
 
+// Updated MenuItem to include hover effect and make it clickable
+// Updated MenuItem to increase font size
 export const MenuItem = ({
   setActive,
   active,
   item,
   children,
+  href, // Add href prop to make it clickable
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+  href?: string; // Optional link for navigation
 }) => {
   return (
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-xl text-black hover:opacity-[0.9] dark:text-black"
+        className="cursor-pointer text-xl text-black hover:text-yellow-500 dark:text-black" // Increased font size to 2xl
       >
-        {item}
+        {href ? (
+          <Link href={href} className="text-black hover:text-yellow-500">
+            {item}
+          </Link>
+        ) : (
+          item
+        )}
       </motion.p>
-      {active !== null && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-        >
-          {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
-              <motion.div
-                transition={transition}
-                layoutId="active"
-                className="bg-white dark:bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
-              >
-                <motion.div layout className="w-max h-full p-4">
-                  {children}
-                </motion.div>
-              </motion.div>
-            </div>
-          )}
-        </motion.div>
-      )}
     </div>
   );
 };
