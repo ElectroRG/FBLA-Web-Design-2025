@@ -32,10 +32,10 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-xl text-black hover:text-yellow-500 dark:text-black" // Increased font size to 2xl
+        className="cursor-pointer text-2xl text-black hover:text-black dark:text-black" // Increased font size to 2xl
       >
         {href ? (
-          <Link href={href} className="text-black hover:text-yellow-500">
+          <Link href={href} className="text-black hover:text-black">
             {item}
           </Link>
         ) : (

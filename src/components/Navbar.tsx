@@ -7,7 +7,7 @@ const Navbar = ({ className }: { className?: string }) => {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <nav className="sticky z-50 bg-gray-800 text-white">
+    <nav className="sticky z-50 bg-white text-white">
       <div className={cn("fixed top-0 inset-x-0 max-w-full mx-auto z-50 bg-gray-800", className)}>
         <Menu
           setActive={setActive}

@@ -5,7 +5,7 @@ import { Timeline } from "@/components/ui/timeline";
 export function TimelineDemo() {
   const data = [
     {
-      title: "Front Entrance",
+      title: <span className="text-white">Front Entrance</span>,
       content: (
 
 
@@ -54,7 +54,7 @@ export function TimelineDemo() {
 
 
     {
-      title: "East Entrance",
+      title: <span className="text-white">East Entrance</span>,
       content: (
         <div>
 
@@ -86,7 +86,7 @@ export function TimelineDemo() {
 
 
     {
-      title: "West Entrance",
+      title: <span className="text-white">West Entrance</span>,
       content: (
 
 
@@ -133,7 +133,7 @@ export function TimelineDemo() {
     },
 
     {
-      title: "Field Area",
+      title: <span className="text-white">Front Entrance</span>,
       content: (
         <div>
           <p className="text-white dark:text-neutral-200 text-xs md:text-xl font-normal mb-4">

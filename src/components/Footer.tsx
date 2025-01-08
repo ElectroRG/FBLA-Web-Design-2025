@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
 
         {/* Contact Us section doesn't trigger the modal */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <p className="text-yellow-500 font-bold text-sm mb-2">Contact Us</p>
+          <p className="text-yellow-500 font-bold text-sm mb-2">Arena Rental</p>
           <b>
             <p style={{ fontSize: "0.9rem" }}>+1 (636) 733-4100</p>
             <p style={{ fontSize: "0.9rem" }}>sumnerjonathon@rsdmo.org</p>
