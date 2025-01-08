@@ -32,6 +32,16 @@ export default function Home() {
     views: [viewWeek, viewMonthGrid, viewDay, viewMonthAgenda],
     defaultView: viewWeek.name,
     isDark: true,
+    calendars: {
+      events : {
+        colorName: 'events',
+        darkColors: {
+          main: '#FFEB3B',
+          onContainer: '#fff5de',
+          container: '#a29742',
+        },
+      },
+    },
     dayBoundaries: {start: '06:00', end: '22:00'},
     callbacks: {
       onRangeUpdate: (range) => {
@@ -62,12 +72,14 @@ export default function Home() {
         title: 'LHS vs EHS Basketball Game',
         start: '2024-12-15 06:00',
         end: '2024-12-15 08:00',
+        calendarId: 'events',
       },
       {
         id: '13',
         title: 'LHS vs MHS Basketball Game',
         start: '2024-12-13 06:00',
         end: '2024-12-13 08:00',
+        calendarId: 'events',
       },
     ],
     selectedDate: '2024-12-15',
@@ -102,7 +114,7 @@ export default function Home() {
 
       <div
         style={{
-          maxWidth: '1500px',
+          maxWidth: '1400px',
           maxHeight: '750px',
           marginTop: '-100px', 
           marginLeft: '40px', 
@@ -114,6 +126,7 @@ export default function Home() {
           flexDirection: 'column',
           flexShrink: 0,
           borderRadius: '20px',
+          paddingRight: '10px',
         }}
       >
         <ScheduleXCalendar calendarApp={calendarApp} />
