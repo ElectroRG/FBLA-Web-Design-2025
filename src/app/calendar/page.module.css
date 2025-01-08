@@ -14,3 +14,7 @@
 .sx-event {
   pointer-events: none;
 }
+
+:root {
+  --sx-color-primary: #778e25;
+}

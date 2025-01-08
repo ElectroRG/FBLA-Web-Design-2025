@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <footer style={{ padding: "50px", backgroundColor: "#333", color: "#fff", textAlign: "center" }}>
+    <footer style={{ padding: "50px", backgroundColor: "#333", color: "#fff", textAlign: "center", marginTop: "-20px" }}>
       <div
         style={{
           display: "flex",
@@ -115,6 +115,12 @@ const Footer: React.FC = () => {
             <p style={{ fontSize: "0.9rem" }}>Saturday: 8:00 AM - 9:00 PM</p>
             <p style={{ fontSize: "0.9rem" }}>Sunday: 10:00 AM - 6:00 PM</p>
           </b>
+          <br />
+          <div className="mt-4 text-center">
+        <a href="/documentation" className="text-yellow-500 font-bold text-sm">
+          Documentation
+        </a>
+      </div>
         </div>
 
         {/* Contact Us section doesn't trigger the modal */}
@@ -135,12 +141,15 @@ const Footer: React.FC = () => {
         >
           <p className="text-yellow-500 font-bold text-sm mb-2" style={{ paddingRight: "20px" }}>
             Policies
-          </p>
+          </p> 
         </div>
       </div>
 
       {/* Render modal if visible */}
       {showModal && <Modal message={modalMessage} onClose={handleCloseModal} />}
+
+      {/* Documentation Link */}
+     
     </footer>
   );
 };
