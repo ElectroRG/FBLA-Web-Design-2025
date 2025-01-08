@@ -31,6 +31,8 @@ export default function Home() {
   const calendarApp = createCalendar({
     views: [viewWeek, viewMonthGrid, viewDay, viewMonthAgenda],
     defaultView: viewWeek.name,
+    isDark: true,
+    dayBoundaries: {start: '06:00', end: '22:00'},
     callbacks: {
       onRangeUpdate: (range) => {
         calendarApp.eventsService.set([
@@ -50,25 +52,25 @@ export default function Home() {
       },
       onEventClick(calendarEvent) {
         console.log('onEventClick', calendarEvent);
-        setEventDetails(calendarEvent); // Update event details
-        setIsVisible(true); // Show modal on event click
+        setEventDetails(calendarEvent);
+        setIsVisible(true);
       },
     },
     events: [
       {
         id: '12',
         title: 'LHS vs EHS Basketball Game',
-        start: '2023-12-15 06:00',
-        end: '2023-12-15 08:00',
+        start: '2024-12-15 06:00',
+        end: '2024-12-15 08:00',
       },
       {
         id: '13',
         title: 'LHS vs MHS Basketball Game',
-        start: '2023-12-13 06:00',
-        end: '2023-12-13 08:00',
+        start: '2024-12-13 06:00',
+        end: '2024-12-13 08:00',
       },
     ],
-    selectedDate: '2023-12-15',
+    selectedDate: '2024-12-15',
   }, [createEventModalPlugin(), eventsServicePlugin]);
 
   const closeModal = () => {
@@ -83,8 +85,8 @@ export default function Home() {
         <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-50 backdrop-blur-md flex items-center justify-center">
           <div className="bg-black p-6 rounded-lg max-w-lg w-full">
             <h2 className="text-2xl font-semibold mb-4">{eventDetails.title}</h2>
-            <p><strong>Start Time:</strong> {eventDetails.start && new Date(eventDetails.start).toLocaleString()}</p>
-            <p><strong>End Time:</strong> {eventDetails.end && new Date(eventDetails.end).toLocaleString()}</p>
+            <p><strong>Start Time:</strong> {eventDetails.start && new Date(eventDetails.start).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
+            <p><strong>End Time:</strong> {eventDetails.end && new Date(eventDetails.end).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
             <div className="mt-4">
               <h3 className="font-medium text-lg">Seating Chart</h3>
               <SeatingChart />

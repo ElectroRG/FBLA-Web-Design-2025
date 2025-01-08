@@ -10,7 +10,7 @@ const sections = [
   { id: 'Section 6', seats: Array.from({ length: 200 }, (_, i) => ({ id: i + 1, reserved: false, selected: false })) }
 ];
 
-function SeatingChart() {
+export default function SeatingChart() {
   const [selectedSection, setSelectedSection] = useState(null);
   const [seats, setSeats] = useState([]);
   const [reservedSeats, setReservedSeats] = useState([]);
@@ -28,22 +28,18 @@ function SeatingChart() {
   }, []);
 
   const handleSectionClick = (sectionId) => {
-    const section = sections.find(s => s.id === sectionId);
-    setSeats(section.seats);
     setSelectedSection(sectionId);
+    const section = sections.find(section => section.id === sectionId);
+    setSeats(section.seats);
   };
 
-  const handleSeatClick = (id) => {
-    setSeats(seats.map(seat => {
-      if (seat.id === id && !seat.reserved) {
-        return { ...seat, selected: !seat.selected };
-      }
-      return seat;
-    }));
+  const handleSeatClick = (seatId) => {
+    setSeats(seats.map(seat => seat.id === seatId ? { ...seat, selected: !seat.selected } : seat));
   };
 
   const handleReserveClick = () => {
     const reserved = seats.filter(seat => seat.selected).map(seat => seat.id);
+    const totalCost = reserved.length * SEAT_PRICE;
 
     // Update the local state
     setReservedSeats(reserved);
@@ -66,6 +62,8 @@ function SeatingChart() {
     ];
     localStorage.setItem('reservedSeats', JSON.stringify(savedReservations));
 
+    // Show alert popup with header
+    alert(`Reservation Successful!\n\nYou have reserved the following seats: ${reserved.join(', ')}.\nTotal cost: $${totalCost}.\n\nPlease pay at Lafayette.`);
   };
 
   // Add a constant for seat price
@@ -102,12 +100,8 @@ function SeatingChart() {
             <button onClick={handleReserveClick} disabled={!seats.some(seat => seat.selected)}>
               Reserve Seats
             </button>
-            <div style={{ 
-              marginLeft: '20px',
-              marginTop: '7px',
-              fontWeight: 'bold'
-             }}>
-              {seats.filter(seat => seat.selected).length} seat(s) - Total: ${seats.filter(seat => seat.selected).length * SEAT_PRICE}
+            <div style={{ marginLeft: '10px' }}>
+              {seats.filter(seat => seat.selected).length} seat(s) selected - Total: ${seats.filter(seat => seat.selected).length * SEAT_PRICE}
             </div>
           </div>
         </div>
@@ -115,5 +109,3 @@ function SeatingChart() {
     </div>
   );
 }
-
-export default SeatingChart;
