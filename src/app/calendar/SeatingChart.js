@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './SeatingChart.css';
-import { SignupFormDemo } from '@/components/SignUp';
 
 const sections = [
   { id: 'Section 1', seats: Array.from({ length: 200 }, (_, i) => ({ id: i + 1, reserved: false, selected: false })) },
@@ -14,8 +13,19 @@ const sections = [
 function SeatingChart() {
   const [selectedSection, setSelectedSection] = useState(null);
   const [seats, setSeats] = useState([]);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [reservedSeats, setReservedSeats] = useState([]);
+
+  // Load saved reservations from localStorage on first render
+  useEffect(() => {
+    const savedReservations = JSON.parse(localStorage.getItem('reservedSeats')) || {};
+    sections.forEach(section => {
+      section.seats.forEach(seat => {
+        if (savedReservations[section.id]?.includes(seat.id)) {
+          seat.reserved = true;
+        }
+      });
+    });
+  }, []);
 
   const handleSectionClick = (sectionId) => {
     const section = sections.find(s => s.id === sectionId);
@@ -34,22 +44,35 @@ function SeatingChart() {
 
   const handleReserveClick = () => {
     const reserved = seats.filter(seat => seat.selected).map(seat => seat.id);
+
+    // Update the local state
     setReservedSeats(reserved);
-    setSeats(seats.map(seat => {
+
+    // Update the seats in this section as reserved
+    const updatedSeats = seats.map(seat => {
       if (seat.selected) {
         return { ...seat, reserved: true, selected: false };
       }
       return seat;
-    }));
-    setIsPopupOpen(true);
+    });
+
+    setSeats(updatedSeats);
+
+    // Save to localStorage
+    const savedReservations = JSON.parse(localStorage.getItem('reservedSeats')) || {};
+    savedReservations[selectedSection] = [
+      ...(savedReservations[selectedSection] || []),
+      ...reserved
+    ];
+    localStorage.setItem('reservedSeats', JSON.stringify(savedReservations));
+
   };
 
-  const closePopup = () => {
-    setIsPopupOpen(false);
-  };
+  // Add a constant for seat price
+  const SEAT_PRICE = 12;
 
   return (
-    <div className="seating-chart-container">
+    <div className="seating-chart-container text-white">
       <div className="sections">
         {sections.map(section => (
           <div
@@ -75,16 +98,18 @@ function SeatingChart() {
               </div>
             ))}
           </div>
-          <button onClick={handleReserveClick} disabled={!seats.some(seat => seat.selected)}>
-            Reserve Seats
-          </button>
-        </div>
-      )}
-
-      {isPopupOpen && (
-        <div className="popup-overlay">
-            <SignupFormDemo />
-            <button className="close-popup" onClick={closePopup}>Close</button>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <button onClick={handleReserveClick} disabled={!seats.some(seat => seat.selected)}>
+              Reserve Seats
+            </button>
+            <div style={{ 
+              marginLeft: '20px',
+              marginTop: '7px',
+              fontWeight: 'bold'
+             }}>
+              {seats.filter(seat => seat.selected).length} seat(s) - Total: ${seats.filter(seat => seat.selected).length * SEAT_PRICE}
+            </div>
+          </div>
         </div>
       )}
     </div>

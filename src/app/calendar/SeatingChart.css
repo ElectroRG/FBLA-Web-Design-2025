@@ -1,134 +1,143 @@
 /* SeatingChart.css */
 .sections {
-    display: flex;
-    gap: 10px;
-    margin: 20px auto; /* Reduced top and bottom margins */
-    justify-content: center;
-    flex-wrap: wrap; /* Allow sections to wrap */
-  }
-  
-  .section {
-    padding: 8px 16px;
-    background-color: #f8e920;
-    color: black;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-bottom: 10px;
-    
-  }
-  
-  .section:hover {
-    background-color: #f8e920;
-  }
-  
-  .section.selected {
-    background-color: #ffcc00;
-  }
-  
-  .seating-chart {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 8px;
-    margin: 10px auto;
-    max-height: 300px; /* Adjust to show fewer seats vertically */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 20px; /* Add padding to avoid scrollbar overlap */
+  display: flex;
+  gap: 10px;
+  margin: 20px auto; /* Reduced top and bottom margins */
+  justify-content: center;
+  flex-wrap: wrap; /* Allow sections to wrap */
+}
 
-  }
+.section {
+  padding: 8px 16px;
+  background-color:  #5A5A5A;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
   
-  .seat {
-    width: 35px;
-    height: 35px;
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #ccc;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 12px;
-  }
-  
-  .seat.selected {
-    background-color: #ffcc00;
-  }
-  
-  .seat.reserved {
-    background-color: #ff3333;
-    cursor: not-allowed;
-  }
-  
-  .seat:hover {
-    background-color: #ddd;
-  }
-  
-  button {
-    background-color: #FF5733;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #FF2D00;
-    transform: scale(1.05);
-  }
-  
-  button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
-  
-  @media (max-width: 600px) {
-    .seating-chart {
-      grid-template-columns: repeat(5, 1fr); /* Adjust for smaller screens */
-    }
-  
-    .seat {
-      width: 30px;
-      height: 30px;
-    }
-  }
-  
-  .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+}
+
+.section:hover {
+  background-color: gray;
+}
+
+.section.selected {
+  background-color: #FFEB3B;
+  color: black;
+}
+
+.seating-chart {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  margin: 10px auto;
+  max-height: 300px; /* Adjust to show fewer seats vertically */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 20px; /* Add padding to avoid scrollbar overlap */
+
+}
+
+.seat {
+  width: 35px;
+  height: 35px;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.seat.selected {
+  background-color: #FFEB3B;
+  color: black;
+}
+
+.seat.reserved {
+  background-color: gray;
+  color: black;
+  cursor: not-allowed;
+  
+}
+
+.seat:hover {
+  background-color: grey;
+}
+
+.seating-chart-container button,
+.popup-overlay button {
+  background-color: #FFEB3B;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.seating-chart-container button:hover,
+.popup-overlay button:hover {
+  background-color: #FFEB3B;
+  color: black;
+  transform: scale(1.05);
+}
+
+.seating-chart-container button:disabled,
+.popup-overlay button:disabled {
+  background-color: #5A5A5A;
+  color: white;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .seating-chart {
+    grid-template-columns: repeat(5, 1fr); /* Adjust for smaller screens */
+  }
+
+  .seat {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.popup-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
 }
 
 .popup-container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  text-align: center;
+background: black;
+padding: 20px;
+border-radius: 10px;
+width: 400px;
+text-align: center;
+color: white;
 }
 
 .popup-content h2 {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
 .popup-content ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 
 .popup-content button {
-  margin-top: 20px;
-  background-color: #e74c3c;
+margin-top: 20px;
+background-color: #e74c3c;
 }
