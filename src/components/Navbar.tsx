@@ -17,12 +17,9 @@ const Navbar = ({ className }: { className?: string }) => {
             href: "/", // Redirect to homepage on click
           }}
         >
-          <MenuItem setActive={setActive} active={active} item="Information">
+          <MenuItem setActive={setActive} active={active} item="Stadium">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/information">Directions</HoveredLink>
-              <HoveredLink href="/facilities">Facilities</HoveredLink>
-              <HoveredLink href="/policies">Policies</HoveredLink>
-              <HoveredLink href="/branding">Amenities</HoveredLink>
+              <HoveredLink href="/stadium">Gymnasium</HoveredLink>
             </div>
           </MenuItem>
 
