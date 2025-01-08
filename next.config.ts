@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
         pathname: "/**", // Use the path pattern to match all image paths
       },
     ],
+    unoptimized: true,
   },
 };
 
