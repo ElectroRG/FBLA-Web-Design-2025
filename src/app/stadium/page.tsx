@@ -7,10 +7,6 @@ import { HeroParallaxDemo } from '@/components/HeroParallax';
 import { CoverDemo } from '@/components/Cover';
 import { LayoutGridDemo } from '@/components/Layout';
 
-
-
-
-
 export default function Home() {
   
 

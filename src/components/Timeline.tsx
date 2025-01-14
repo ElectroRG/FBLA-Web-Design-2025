@@ -133,7 +133,7 @@ export function TimelineDemo() {
     },
 
     {
-      title: <span className="text-white">Front Entrance</span>,
+      title: <span className="text-white">Field Area</span>,
       content: (
         <div>
           <p className="text-white dark:text-neutral-200 text-xs md:text-xl font-normal mb-4">
