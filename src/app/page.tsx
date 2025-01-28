@@ -19,17 +19,13 @@ const stadium = [
   },
 ];
 
-
-
-
 export default function Home() {
   return (
     <div>
-
       <HeroParallaxDemo/>
+      <ParallaxScrollDemo/>
       <Footer/>
       {/* Add Footer here */}
-      
     </div>
   );
 }

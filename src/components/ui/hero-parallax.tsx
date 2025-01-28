@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { FlipWords } from "./flip-words";
+import { TextHoverEffect } from "./text-hover-effect";
 
 export const HeroParallax = ({
   products,
@@ -59,7 +60,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="bg-black h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="bg-black h-[300vh] py-20 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div

@@ -14,7 +14,7 @@ import { createEventModalPlugin } from "@schedule-x/event-modal";
 import { ScheduleXCalendar } from "@schedule-x/react";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 import { TypewriterEffectSmoothDemo } from '@/components/Typewriter';
-import SeatingChart from './SeatingChart';
+import StadiumLayout from '@/components/StadiumLayout';
 
 interface EventDetails {
   title?: string;
@@ -94,16 +94,50 @@ export default function Home() {
     <div>
       {/* Modal */}
       {isVisible && eventDetails && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-50 backdrop-blur-md flex items-center justify-center">
-          <div className="bg-black p-6 rounded-lg max-w-lg w-full">
-            <h2 className="text-2xl font-semibold mb-4">{eventDetails.title}</h2>
-            <p><strong>Start Time:</strong> {eventDetails.start && new Date(eventDetails.start).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
-            <p><strong>End Time:</strong> {eventDetails.end && new Date(eventDetails.end).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
-            <div className="mt-4">
-              <h3 className="font-medium text-lg">Seating Chart</h3>
-              <SeatingChart />
+        <div className="fixed top-0 left-0 w-full h-full bg-black/70 z-50 backdrop-blur-lg flex items-center justify-center transition-all duration-300 ease-in-out">
+          <div className="bg-gradient-to-br from-zinc-900 via-black to-zinc-900 p-8 rounded-2xl max-w-6xl w-full border border-zinc-800 shadow-2xl transform transition-all duration-300 ease-in-out">
+            <div className="flex justify-between items-start mb-6">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-200 to-yellow-500 bg-clip-text text-transparent">{eventDetails.title}</h2>
+              <button 
+                onClick={closeModal} 
+                className="p-2 hover:bg-zinc-800 rounded-full transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-zinc-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
-            <button onClick={closeModal} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="space-y-4">
+                <div className="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800">
+                  <p className="text-zinc-400 text-sm mb-1">Start Time</p>
+                  <p className="text-xl font-medium text-white">
+                    {eventDetails.start && new Date(eventDetails.start).toLocaleString('en-US', 
+                      { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+                    )}
+                  </p>
+                </div>
+                <div className="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800">
+                  <p className="text-zinc-400 text-sm mb-1">End Time</p>
+                  <p className="text-xl font-medium text-white">
+                    {eventDetails.end && new Date(eventDetails.end).toLocaleString('en-US', 
+                      { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+                    )}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-zinc-900/50 p-4 rounded-xl border border-zinc-800">
+                <h3 className="text-xl font-semibold text-yellow-400 mb-4">Event Details</h3>
+                <p className="text-zinc-300">Join us for an exciting basketball game! Select your preferred seats below to secure your spot.</p>
+              </div>
+            </div>
+          
+            <div className="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800">
+              <h3 className="text-2xl font-semibold text-yellow-400 mb-6">Select Your Seats</h3>
+              <StadiumLayout />
+            </div>
           </div>
         </div>
       )}

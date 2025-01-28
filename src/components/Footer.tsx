@@ -3,27 +3,29 @@ import React, { useState } from "react";
 // Modal component with improved styling
 const Modal: React.FC<{ message: string; onClose: () => void }> = ({ message, onClose }) => {
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        padding: "30px",
-        backgroundColor: "#1a1a1a",
-        color: "#fff",
-        borderRadius: "15px",
-        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
-        zIndex: 1000,
-        maxHeight: "80vh",
-        overflowY: "auto",
-        width: "80%",
-        maxWidth: "600px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        textAlign: "center"
-      }}
-    >
-      <div className="prose prose-invert mx-auto">{message}</div>
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center transition-all duration-300">
+      <div 
+        className="relative bg-gradient-to-br from-zinc-900 via-black to-zinc-900 rounded-none w-full h-full transform transition-all duration-300
+                 border border-zinc-800 shadow-2xl shadow-black/50 overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-transparent opacity-50" />
+        
+        <div className="relative p-6 md:p-8 overflow-y-auto max-h-[80vh] scrollbar-thin scrollbar-track-zinc-900 scrollbar-thumb-zinc-700">
+          <button
+            onClick={onClose}
+            className="sticky top-0 left-full p-2 text-zinc-400 hover:text-white transition-colors rounded-full hover:bg-white/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <div className="prose prose-invert prose-yellow max-w-none">
+            <div className="space-y-4 text-zinc-300 leading-relaxed">{message}</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

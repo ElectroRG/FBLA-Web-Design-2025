@@ -7,7 +7,7 @@ const Documentation: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-16 px-6 sm:px-8 lg:px-12">
       <TracingBeam className="px-8">
-        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="max-w-7xl mx-auto space-y-16">
           <div className="space-y-6 pb-8">
             <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-yellow-500">
               Site Documentation

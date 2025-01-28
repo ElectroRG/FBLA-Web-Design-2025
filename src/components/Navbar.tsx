@@ -7,15 +7,22 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navigationItems = [
+    { href: "/calendar", label: "Calendar" },
+    { href: "/stadium", label: "Stadium" },
+    { href: "/documentation", label: "Documentation" }
+  ];
+
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[85%] max-w-2xl bg-black/40 backdrop-blur-xl z-50 border border-white/10 rounded-2xl">
-      <div className="w-full flex items-center justify-center px-6 py-4">
-        <div className="hidden md:flex space-x-6 items-center">
-          {[
-            { href: "/calendar", label: "Calendar" },
-            { href: "/stadium", label: "Stadium" },
-            { href: "/documentation", label: "Documentation" }
-          ].map((link) => (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl bg-black/40 backdrop-blur-xl z-50 border border-white/10 rounded-2xl">
+      <div className="w-full flex items-center justify-between px-8 py-4">
+        <Link href="/" className="flex-shrink-0">
+          <span className="text-white text-xl font-semibold"></span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center justify-center flex-1 space-x-6">
+          {navigationItems.map((link) => (
             <motion.div
               key={link.href}
               whileHover={{ 
@@ -39,6 +46,7 @@ export function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-white focus:outline-none"
+          aria-label="Toggle menu"
         >
           <svg
             className="w-6 h-6"
@@ -64,14 +72,10 @@ export function Navbar() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md md:hidden"
+              className="absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md md:hidden rounded-b-2xl border-t border-white/10"
             >
               <div className="flex flex-col items-center py-4 space-y-4">
-                {[
-                  { href: "/calendar", label: "Calendar" },
-                  { href: "/stadium", label: "Stadium" },
-                  { href: "/documentation", label: "Documentation" }
-                ].map((link) => (
+                {navigationItems.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

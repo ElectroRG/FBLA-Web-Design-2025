@@ -30,11 +30,11 @@ export const ParallaxScroll = ({
 
   return (
     <div
-      className={cn("h-[40rem] items-start overflow-y-auto w-full bg-black", className)}
+      className={cn("h-[30rem] items-start overflow-y-auto w-full bg-black", className)}
       ref={gridRef}
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-10 py-40 px-10"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start max-w-5xl mx-auto gap-10 py-10 px-10"
         ref={gridRef}
       >
         <div className="grid gap-10">
@@ -45,9 +45,9 @@ export const ParallaxScroll = ({
             >
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
-                height="400"
-                width="400"
+                className="h-60 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                height="300"
+                width="300"
                 alt="thumbnail"
               />
             </motion.div>
@@ -58,9 +58,13 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
-                height="400"
-                width="400"
+                className="h-60 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                height={600}
+                width={600}
+                quality={100}
+                priority
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                 alt="thumbnail"
               />
             </motion.div>
@@ -71,9 +75,9 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
-                height="400"
-                width="400"
+                className="h-60 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                height="300"
+                width="300"
                 alt="thumbnail"
               />
             </motion.div>
