@@ -10,7 +10,9 @@ export function Navbar() {
   const navigationItems = [
     { href: "/calendar", label: "Calendar" },
     { href: "/stadium", label: "Stadium" },
-    { href: "/documentation", label: "Documentation" }
+    { href: "/documentation", label: "Documentation" },
+    { href: "/amenities", label: "Amenities" },
+    { href: "/policies", label: "Policies" },
   ];
 
   return (

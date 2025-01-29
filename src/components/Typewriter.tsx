@@ -4,12 +4,11 @@ export function TypewriterEffectSmoothDemo() {
   const words = [
     {
       text: "Events",
-      className: "text-white-500 dark:text-yellow-500",
-
+      className: "text-yellow-500",
     },
     {
       text: "Calendar",
-      className: "text-yellow-500 dark:text-yellow-500",
+      className: "text-yellow-500",
     },
   ];
   return (
