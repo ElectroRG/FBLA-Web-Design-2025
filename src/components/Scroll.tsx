@@ -5,48 +5,66 @@ import Image from "next/image";
 
 const content = [
   {
-    title: "Collaborative Editing",
+    title: "State-of-the-Art Gymnasium",
     description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      "Our modern gymnasium features professional-grade equipment, multiple basketball courts, and advanced training facilities. Perfect for both competitive sports and recreational activities.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        Collaborative Editing
-      </div>
-    ),
-  },
-  {
-    title: "Real time changes",
-    description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--yellow-500),var(--orange-500))] flex items-center justify-center text-white">
         <Image
-          src="/linear.webp"
+          src="/ball.png"
           width={300}
           height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
+          className="h-full w-full object-cover rounded-xl"
+          alt="gymnasium facilities"
         />
       </div>
     ),
   },
   {
-    title: "Version control",
+    title: "Olympic-Size Swimming Pool",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Dive into excellence with our Olympic-standard swimming pool. Complete with professional timing systems, spectator seating, and year-round temperature control for optimal training conditions.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-        Version control
+      <div className="h-full w-full flex items-center justify-center text-white">
+        <Image
+          src="/swim.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover rounded-xl"
+          alt="swimming pool"
+        />
       </div>
     ),
   },
   {
-    title: "Running out of content",
+    title: "Tennis Courts Complex",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Experience world-class tennis facilities with our professional-grade courts. Whether you're a beginner or an advanced player, our courts provide the perfect environment for improving your game.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        Running out of content
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--yellow-500),var(--orange-500))] flex items-center justify-center text-white">
+        <Image
+          src="/tennis.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover rounded-xl"
+          alt="tennis courts"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Wrestling Arena",
+    description:
+      "Our dedicated wrestling facility features professional mats, training equipment, and specialized areas for both practice and competition. Join our wrestling program and train like a champion.",
+    content: (
+      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--yellow-500),var(--orange-500))] flex items-center justify-center text-white">
+        <Image
+          src="/wrestling.png"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover rounded-xl"
+          alt="wrestling arena"
+        />
       </div>
     ),
   },
