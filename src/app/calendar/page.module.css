@@ -1,20 +1,41 @@
 .calendar-container {
   max-width: 1500px;
   max-height: 800px;
-  margin-top: 200px;
-  margin: 0 auto;
+  margin: 2rem auto;
   height: 800px;
   overflow: auto;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  border-radius: 20px;
+  border-radius: 1.5rem;
+  background: linear-gradient(to bottom right, rgba(24, 24, 27, 0.9), rgba(0, 0, 0, 0.95));
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.calendar-container:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .sx-event {
   pointer-events: none;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.sx-event:hover {
+  transform: scale(1.02);
 }
 
 :root {
-  --sx-color-primary: #778e25;
+  --sx-color-primary: #FFD700;
+  --sx-color-primary-container: rgba(255, 215, 0, 0.15);
+  --sx-color-on-primary: #000000;
+  --sx-color-surface: rgba(24, 24, 27, 0.95);
+  --sx-color-surface-container: rgba(39, 39, 42, 0.8);
+  --sx-color-on-surface: #FFFFFF;
 }

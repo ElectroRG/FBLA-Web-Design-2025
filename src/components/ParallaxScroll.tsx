@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 
 export function ParallaxScrollDemo() {
@@ -10,17 +10,35 @@ export function ParallaxScrollDemo() {
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 3.5]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.8, 0.6]);
-  const translateZ = useTransform(scrollYProgress, [0, 0.8], [0, 2000]);
-  const translateY = useTransform(scrollYProgress, [0, 0.8], [0, -600]);
-  const rotateX = useTransform(scrollYProgress, [0, 0.8], [0, 25]);
-  const beamHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.8], [1, 3.5]), {
+    stiffness: 100,
+    damping: 30
+  });
+  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.8, 0.6]), {
+    stiffness: 100,
+    damping: 30
+  });
+  const translateZ = useSpring(useTransform(scrollYProgress, [0, 0.8], [0, 2000]), {
+    stiffness: 100,
+    damping: 30
+  });
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.8], [0, -600]), {
+    stiffness: 100,
+    damping: 30
+  });
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.8], [0, 25]), {
+    stiffness: 100,
+    damping: 30
+  });
+  const beamHeight = useSpring(useTransform(scrollYProgress, [0, 1], ["0%", "100%"]), {
+    stiffness: 100,
+    damping: 30
+  });
 
   return (
     <div
       ref={ref}
-      className="relative h-[200vh] w-full overflow-hidden bg-black"
+      className="relative h-[150vh] w-full overflow-hidden bg-black"
       style={{ perspective: "2000px" }}
     >
       <div className="sticky top-0 h-screen w-full">

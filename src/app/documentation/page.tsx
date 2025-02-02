@@ -25,31 +25,6 @@ const Documentation: React.FC = () => {
   return (
     <div className="min-h-screen bg-black py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden">
       <TracingBeam className="px-8">
-        {/* Left side beam */}
-        <div className="absolute -left-4 md:-left-20 top-3 rotate-180">
-          <motion.div
-            transition={{
-              duration: 0.2,
-              delay: 0.5,
-            }}
-            style={{
-              boxShadow: boxShadowProgress
-            }}
-            className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center"
-          >
-            <motion.div
-              transition={{
-                duration: 0.2,
-                delay: 0.5,
-              }}
-              style={{
-                backgroundColor: backgroundColorProgress,
-                borderColor: borderColorProgress
-              }}
-              className="h-2 w-2 rounded-full border border-neutral-300 bg-white"
-            />
-          </motion.div>
-        </div>
         <div className="max-w-7xl mx-auto space-y-20 relative z-10">
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-yellow-400 text-center">Overview</h2>
