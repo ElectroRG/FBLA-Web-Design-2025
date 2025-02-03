@@ -1,6 +1,5 @@
 'use client';
 import { useState } from "react";
-// import styles from './page.module.css'
 import {
   createCalendar,
   viewDay,
@@ -9,11 +8,9 @@ import {
   viewWeek,
 } from '@schedule-x/calendar'
 import '@schedule-x/theme-default/dist/index.css'
-// import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import { createEventModalPlugin } from "@schedule-x/event-modal";
 import { ScheduleXCalendar } from "@schedule-x/react";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
-import { TypewriterEffectSmoothDemo } from '@/components/Typewriter';
 import StadiumLayout from '@/components/StadiumLayout';
 
 interface EventDetails {
@@ -23,8 +20,8 @@ interface EventDetails {
 }
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false); // Modal visibility
-  const [eventDetails, setEventDetails] = useState<EventDetails | null>(null); // Store event details
+  const [isVisible, setIsVisible] = useState(false);
+  const [eventDetails, setEventDetails] = useState<EventDetails | null>(null);
 
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
 
@@ -36,9 +33,9 @@ export default function Home() {
       events : {
         colorName: 'events',
         darkColors: {
-          main: '#FFEB3B',
-          onContainer: '#fff5de',
-          container: '#a29742',
+          main: '#B8860B',
+          onContainer: '#F5DEB3',
+          container: '#DAA520',
         },
       },
     },
@@ -70,29 +67,28 @@ export default function Home() {
       {
         id: '12',
         title: 'LHS vs EHS Basketball Game',
-        start: '2024-12-15 06:00',
-        end: '2024-12-15 08:00',
+        start: '2025-02-15 06:00',
+        end: '2025-02-15 08:00',
         calendarId: 'events',
       },
       {
         id: '13',
         title: 'LHS vs MHS Basketball Game',
-        start: '2024-12-13 06:00',
-        end: '2024-12-13 08:00',
+        start: '2025-02-13 06:00',
+        end: '2025-02-13 08:00',
         calendarId: 'events',
       },
     ],
-    selectedDate: '2024-12-15',
+    selectedDate: '2025-02-15',
   }, [createEventModalPlugin(), eventsServicePlugin]);
 
   const closeModal = () => {
-    setIsVisible(false); // Close modal
-    setEventDetails(null); // Reset event details
+    setIsVisible(false);
+    setEventDetails(null);
   };
 
   return (
-    <div>
-      {/* Modal */}
+    <div className="h-screen bg-black py-28 px-4 pb-32 overflow-hidden">
       {isVisible && eventDetails && (
         <div className="fixed top-0 left-0 w-full h-full bg-black/70 z-50 backdrop-blur-lg flex items-center justify-center transition-all duration-300 ease-in-out">
           <div className="bg-gradient-to-br from-zinc-900 via-black to-zinc-900 p-8 rounded-2xl max-w-6xl w-full border border-zinc-800 shadow-2xl transform transition-all duration-300 ease-in-out">
@@ -142,28 +138,10 @@ export default function Home() {
         </div>
       )}
 
-      <div>
-        <TypewriterEffectSmoothDemo />
-      </div>
-
-      <div
-        style={{
-          maxWidth: '1400px',
-          maxHeight: '750px',
-          marginTop: '-100px', 
-          marginLeft: '40px', 
-          marginRight: 'auto', 
-          marginBottom: '0', 
-          height: '800px',
-          overflow: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          flexShrink: 0,
-          borderRadius: '20px',
-          paddingRight: '10px',
-        }}
-      >
-        <ScheduleXCalendar calendarApp={calendarApp} />
+      <div className="w-full h-[calc(100vh-7rem)] mx-auto px-4">
+        <div className="h-full bg-zinc-900/30 rounded-2xl p-6 backdrop-blur-sm border border-zinc-800/30 shadow-xl transition-all duration-300 hover:border-zinc-700/50 overflow-y-auto">
+          <ScheduleXCalendar calendarApp={calendarApp} />
+        </div>
       </div>
     </div>
   );
